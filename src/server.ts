@@ -6,7 +6,6 @@ import taskRoutes from "./routes/taskRoutes";
 import categoryRoutes from "./routes/categoryRoutes";
 import dotenv from 'dotenv';
 
-
 const app = express();
 dotenv.config();
 

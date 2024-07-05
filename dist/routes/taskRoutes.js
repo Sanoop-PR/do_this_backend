@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const taskController_1 = require("../controllers/taskController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const taskRoutes = express_1.default.Router();
+taskRoutes.use(authMiddleware_1.authenticationMiddleware);
+taskRoutes.route("/").get(taskController_1.getAllTasks);
+taskRoutes.route("/create").post(taskController_1.createTask);
+taskRoutes.route("/task-by-categories/:id").get(taskController_1.getAllTaskByCategory);
+taskRoutes.route("/completed").get(taskController_1.getAllCompletedTasks);
+taskRoutes.route("/today").get(taskController_1.getTasksForToday);
+taskRoutes.route("/create").post(taskController_1.createTask);
+taskRoutes.route("/update/:id").put(taskController_1.toggletaskStatus);
+taskRoutes.route("/:id").delete(taskController_1.deleteTask);
+taskRoutes.route("/edit/:id").put(taskController_1.editTask);
+exports.default = taskRoutes;
