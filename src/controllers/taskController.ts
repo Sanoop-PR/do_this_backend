@@ -53,6 +53,7 @@ export const getTasksForToday = async (req:any,res:Response) =>{
     const userId = req.user;
     const todaysDate = new Date();
     todaysDate.setHours(5, 30, 0, 0);
+    console.log(todaysDate.toISOString())
     const tasks = await Task.find({
       user:userId,
       date:todaysDate.toISOString()

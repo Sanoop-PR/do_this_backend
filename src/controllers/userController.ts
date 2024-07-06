@@ -140,9 +140,7 @@ export const uploadProfilePic = async (
 ) => {
   try {
     const { id } = request.body;
-    console.log(request.file)
     const profilePic = request?.file?.filename;
-    console.log(id, request?.file?.filename);
     const existingUser = await User.findOne({ _id: id });
 
     if (!existingUser) {
@@ -159,7 +157,6 @@ export const uploadProfilePic = async (
     );
     return response.status(200).send({ message: "success" });
   } catch (error) {
-    console.log('hi'+error);
     throw error;
   }
 };
@@ -184,7 +181,6 @@ export const removeProfilePic = async (
     );
     return response.status(200).send({ message: "success" });
   } catch (error) {
-    console.log('hi'+error);
     throw error;
   }
 };

@@ -131,12 +131,10 @@ const updatePassword = (request, response) => __awaiter(void 0, void 0, void 0, 
 });
 exports.updatePassword = updatePassword;
 const uploadProfilePic = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b;
+    var _a;
     try {
         const { id } = request.body;
-        console.log(request.file);
         const profilePic = (_a = request === null || request === void 0 ? void 0 : request.file) === null || _a === void 0 ? void 0 : _a.filename;
-        console.log(id, (_b = request === null || request === void 0 ? void 0 : request.file) === null || _b === void 0 ? void 0 : _b.filename);
         const existingUser = yield userModel_1.default.findOne({ _id: id });
         if (!existingUser) {
             return response.status(409).send({ message: "User doesn't exist" });
@@ -149,7 +147,6 @@ const uploadProfilePic = (request, response) => __awaiter(void 0, void 0, void 0
         return response.status(200).send({ message: "success" });
     }
     catch (error) {
-        console.log('hi' + error);
         throw error;
     }
 });
@@ -169,7 +166,6 @@ const removeProfilePic = (request, response) => __awaiter(void 0, void 0, void 0
         return response.status(200).send({ message: "success" });
     }
     catch (error) {
-        console.log('hi' + error);
         throw error;
     }
 });
