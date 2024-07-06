@@ -66,8 +66,7 @@ const getTasksForToday = (req, res) => __awaiter(void 0, void 0, void 0, functio
     try {
         const userId = req.user;
         const todaysDate = new Date();
-        todaysDate.setHours(5, 30, 0, 0);
-        console.log(todaysDate.toISOString());
+        todaysDate.setHours(0, 0, 0, 0);
         const tasks = yield taskModel_1.default.find({
             user: userId,
             date: todaysDate.toISOString()
